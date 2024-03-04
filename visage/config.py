@@ -1,0 +1,40 @@
+# Copyright (c) Facebook, Inc. and its affiliates.
+from detectron2.config import CfgNode as CN
+
+
+def add_visage_config(cfg):
+    cfg.DATASETS.DATASET_RATIO = []
+    
+    cfg.INPUT.SAMPLING_FRAME_RATIO = 1.0
+
+    # Pseudo Data Use
+    cfg.INPUT.PSEUDO = CN()
+    cfg.INPUT.PSEUDO.AUGMENTATIONS = ['rotation']
+    cfg.INPUT.PSEUDO.MIN_SIZE_TRAIN = (480, 512, 544, 576, 608, 640, 672, 704, 736, 768)
+    cfg.INPUT.PSEUDO.MAX_SIZE_TRAIN = 768
+    cfg.INPUT.PSEUDO.MIN_SIZE_TRAIN_SAMPLING = "choice_by_clip"
+    cfg.INPUT.PSEUDO.CROP = CN()
+    cfg.INPUT.PSEUDO.CROP.ENABLED = False
+    cfg.INPUT.PSEUDO.CROP.TYPE = "absolute_range"
+    cfg.INPUT.PSEUDO.CROP.SIZE = (384, 600)
+    cfg.INPUT.PSEUDO.COPY_PASTE = False
+
+    cfg.INPUT.LSJ_AUG = CN()
+    cfg.INPUT.LSJ_AUG.ENABLED = False
+    cfg.INPUT.LSJ_AUG.IMAGE_SIZE = 1024
+    cfg.INPUT.LSJ_AUG.MIN_SCALE = 0.1
+    cfg.INPUT.LSJ_AUG.MAX_SCALE = 2.0
+
+    cfg.MODEL.MASK_FORMER.TEST.WINDOW_INFERENCE = False
+
+    cfg.MODEL.MASK_FORMER.MEMORY_BANK = CN()
+    cfg.MODEL.MASK_FORMER.MEMORY_BANK.BANK_SIZE = 5
+
+    cfg.MODEL.APPEARANCE_WEIGHT = 0.75
+
+    cfg.MODEL.APPEARANCE_DECODER = CN()
+    cfg.MODEL.APPEARANCE_DECODER.IN_FEATURES = ["res3", "res4", "res5"]
+    cfg.MODEL.APPEARANCE_DECODER.REID_WEIGHT = 2.
+    cfg.MODEL.APPEARANCE_DECODER.AUX_REID_WEIGHT = 3.
+    cfg.MODEL.APPEARANCE_DECODER.APP_REID_WEIGHT = 2.
+    cfg.MODEL.APPEARANCE_DECODER.APP_AUX_REID_WEIGHT = 3.
