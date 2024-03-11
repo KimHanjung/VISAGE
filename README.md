@@ -67,10 +67,10 @@ However portions of the project are available under separate license terms: Dete
 ## <a name="CitingVISAGE"></a>Citing VISAGE
 
 ```BibTeX
-@misc{kim2023visage,
+@misc{kim2024visage,
       title={VISAGE: Video Instance Segmentation with Appearance-Guided Enhancement}, 
       author={Hanjung Kim and Jaehyun Kang and Miran Heo and Sukjun Hwang and Seoung Wug Oh and Seon Joo Kim},
-      year={2023},
+      year={2024},
       eprint={2312.04885},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
