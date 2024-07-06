@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Video Instance Segmentation">
+  <meta name="keywords" content="VIS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VISAGE: Video Instance Segmentation with Appearance-Guided Enhancement</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M3DQFXZBJH"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-M3DQFXZBJH');
+ </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">VISAGE: Video Instance Segmentation with Appearance-Guided Enhancement</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="http://kimhanjung.github.io/">Hanjung Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/jaehyun-kang-904aaa1ba/">Jaehyun Kang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/miranheo">Miran Heo</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sukjunhwang.github.io/">Sukjun Hwang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/seoungwugoh">Seoung Wug Oh</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/seonjookim/">Seon Joo Kim</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Yonsei University,</span>
+            <span class="author-block"><sup>2</sup>Carnegie Mellon University,</span>
+            <span class="author-block"><sup>3</sup>Adobe Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2312.04885"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2312.04885"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/KimHanjung/VISAGE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="column is-full">
+      <img src="./static/images/sup_teaser.pdf" alt="Main figure" /> 
+    </div>
+      <div class="hero-body">
+        <h2 class="subtitle has-text-centered">
+          A novel video instance segmentation framework that enhances the instance association by capturing the appearance information of objects.
+        </h2>
+      </div>
+  </div>
+</section>
+-->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In recent years, online Video Instance Segmentation (VIS) methods have shown remarkable advancement with their powerful query-based detectors. 
+            Utilizing the output queries of the detector at the frame-level, these methods achieve high accuracy on challenging benchmarks. 
+            However, our observations demonstrate that these methods heavily rely on location information, which often causes incorrect associations between objects.
+          </p>
+          <p>
+            This paper presents that a key axis of object matching in trackers is appearance information, which becomes greatly instructive under conditions where positional cues are insufficient for distinguishing their identities. 
+            Therefore, we suggest a simple yet powerful extension to object decoders that explicitly extract embeddings from backbone features and drive queries to capture the appearances of objects, which greatly enhances instance association accuracy. 
+            Furthermore, recognizing the limitations of existing benchmarks in fully evaluating appearance awareness, we have constructed a synthetic dataset to rigorously validate our method.
+          </p>
+          <p>
+            By effectively resolving the over-reliance on location information, we achieve state-of-the-art results on YouTube-VIS 2019/2021 and Occluded VIS (OVIS). 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overall Framework</h2>
+          <img src="./static/images/main_figure.pdf" alt="Main figure" />
+          <div class="content has-text-justified">
+          <p>
+            <b>Overview of VISAGE.</b>
+            (a) The proposed VISAGE’s architecture which generate object embedding and appearance embedding.
+            (b) Overall inference pipeline of VISAGE: At time step t − 1, the memory bank is updated with both the appearance embedding and the object embedding. Then, at time step t, the memory embedding is read from the memory bank and used for matching.
+            (c). Details of the matching process: In that scenario, using only object embeddings leads to incorrect matching. However, when guided by the appearance embedding, the matching process can be corrected.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Comparison with Previous Methods</h2>
+        <img src="./static/images/main_result.png" alt="Main Experiments" />
+        <div class="content has-text-justified">
+          <!-- <p>
+            Comparisons on the YouTube-VIS 2019, 2021 and OVIS validation sets.
+          </p> -->
+          <!-- make above center -->
+          <p>
+            <b>Quantitative results on YouTube-VIS 2019, 2021 and OVIS validation sets.</b>
+            We compare our method with the state-of-the-art methods on the YouTube-VIS 2019, 2021 and OVIS validation sets. 
+            All expermients are conducted with the same backbone network (ResNet-50).
+          </p>
+        </div>
+        <img src="./static/images/sup_teaser.pdf" alt="Main Qualitative Experiments" />
+        <div class="content has-text-justified">
+          <!-- <p>
+            Comparisons on the YouTube-VIS 2019, 2021 and OVIS validation sets.
+          </p> -->
+          <!-- make above center -->
+          <p>
+            <b>Qualitative results across challenging scenarios.</b>
+            Predicted results using previous methods and our appearance-guided methods. 
+            The first column illustrates a shot change across consecutive frames, a scenario where previous methods fail to maintain consistent tracking. 
+            The second and third columns demonstrate trajectory intersections, leading to id-switching with previous methods.
+            The last column shows a synthetic scenario where the frame is flipped, causing previous methods to lose track of the object.
+            Unlike previous methods, our method successfully tracks objects without switching or losses.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Analysis of Appearance-Guided Enhancement</h2>
+          <img src="./static/images/pseudo.png" alt="Main Experiments" />
+          <div class="content has-text-justified">
+            <!-- <p>
+              Comparisons on the YouTube-VIS 2019, 2021 and OVIS validation sets.
+            </p> -->
+            <!-- make above center -->
+            <p>
+              <b>Pseudo dataset.</b>
+              We generate a pseudo dataset to analyze the effect of appearance-guided enhancement.
+              In track type videos, instances move along random bezier curves. 
+              On the other hand, the swap type refers to a scenario where the positions of each instance are exchanged in the middle of the video. 
+              The colored dot above each instance represents the corresponding instance in the swapped frame.
+            </p>
+          </div>
+          <img src="./static/images/pseudo_table.png" alt="Main Qualitative Experiments" />
+          <div class="content has-text-justified">
+            <!-- <p>
+              Comparisons on the YouTube-VIS 2019, 2021 and OVIS validation sets.
+            </p> -->
+            <!-- make above center -->
+            <p>
+              <b>Comparison on pseudo dataset.</b>
+              We conduct experiments on the pseudo dataset to analyze the effect of appearance-guided enhancement.
+              The results show that previous methods largely rely on location information, leading to incorrect matching in the swap type.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <img src="./static/images/pseudo.png" alt="Pseudo dataset" />
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="./static/images/pseudo_table.png" alt="Main Experiments" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Analysis of Appearance-Guided Enhancement</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Quantitative results on YouTube-VIS 2019, 2021 and OVIS validation sets.</b>
+            We compare our method with the state-of-the-art methods on the YouTube-VIS 2019, 2021 and OVIS validation sets. 
+            All expermients are conducted with the same backbone network (ResNet-50).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section> -->
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{kim2023visage,
+      title={VISAGE: Video Instance Segmentation with Appearance-Guided Enhancement},
+      author={Kim, Hanjung and Kang, Jaehyun and Heo, Miran and Hwang, Sukjun and Oh, Seoung Wug and Kim, Seon Joo},
+      journal={arXiv preprint arXiv:2312.04885},
+      year={2023}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template was borrowed from the <a href="https://nerfies.github.io/">Nerfies</a> project.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
