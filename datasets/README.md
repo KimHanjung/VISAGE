@@ -89,3 +89,7 @@ $DETECTRON2_DATASETS
 +-- ovis
     ...
 ```
+
+# Pseudo Dataset
+
+You can download our synthetic datasets [here](https://drive.google.com/file/d/1Om4IzvfldBXgBzPaUuGYg0MWSlFqI3cJ/view?usp=sharing).
