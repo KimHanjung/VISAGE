@@ -73,7 +73,7 @@ INPUT:
       ENABLED: True
       TYPE: 'absolute_range'
       SIZE: (384, 600)
-    COPY_PASTE: True
+    COPY_PASTE: False
   FORMAT: 'RGB'
 TEST:
   EVAL_PERIOD: 1000
